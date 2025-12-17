@@ -1,0 +1,832 @@
+/* =============================== */
+/*      VARIABLES Y RESETEO         */
+/* =============================== */
+:root {
+  --bg-primary: #000000; /* Cambiado a negro puro */
+  --bg-secondary: #1a1a1a;
+  --bg-card: #222;
+  --text-primary: #fff;
+  --text-secondary: #b3b3b3;
+  --accent-color: #ffaa00;
+  --accent-hover: #ffcc33;
+  --border-radius: 12px;
+  --font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  --transition-speed: 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- AÑADE ESTAS REGLAS O MODIFICA LAS EXISTENTES --- */
+html {
+  background-color: #000; /* Fondo negro para toda la página */
+}
+
+body {
+  background: var(--bg-primary); /* Ahora usa el negro puro */
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  padding-top: 90px;
+  padding-bottom: 130px;
+  overflow-x: hidden;
+}
+
+/* =============================== */
+/*          HEADER FIJO            */
+/* =============================== */
+.fixed-header {
+  width: 100%;
+  background: rgba(17, 17, 17, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 10px 5%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+  transition: all var(--transition-speed);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.fixed-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fixed-header .logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.fixed-header h1 {
+  font-size: 24px;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+.controls input,
+.controls select {
+  padding: 8px 12px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid #444;
+  border-radius: 25px;
+  font-family: var(--font-family);
+  transition: all var(--transition-speed);
+}
+
+.controls input:focus,
+.controls select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/* =============================== */
+/*     CONTENIDO PRINCIPAL         */
+/* =============================== */
+.container {
+  width: 92%;
+  margin: auto;
+  max-width: 1400px;
+}
+
+/* --- Hero Section (Película Destacada) --- */
+#hero-section {
+  position: relative;
+  height: 70vh;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+#hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, var(--bg-primary) 0%, rgba(15, 15, 15, 0.4) 50%, transparent 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 5% 5% 5%;
+  max-width: 600px;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.hero-meta .rating {
+  color: var(--accent-color);
+}
+
+.hero-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-family);
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Grid Section --- */
+#grid-section .section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.grid .card {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  display: flex;
+  flex-direction: column;
+}
+
+.grid .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(255, 170, 0, 0.2);
+}
+
+.grid img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.card .meta {
+  padding: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .meta h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card .meta p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.details-btn {
+  padding: 8px 12px;
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+  font-family: var(--font-family);
+  margin-top: auto;
+}
+
+.details-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.info {
+  text-align: center;
+  margin: 20px 0;
+  color: var(--text-secondary);
+}
+
+.empty {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+.hidden { display: none; }
+
+/* =============================== */
+/*     PAGINACIÓN                  */
+/* =============================== */
+.pagination {
+  text-align: center;
+  margin: 40px auto;
+}
+
+.pagination button {
+  padding: 10px 15px;
+  margin: 5px;
+  background: var(--bg-card);
+  border: 1px solid #444;
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  transition: all var(--transition-speed);
+}
+
+.pagination button:hover {
+  background: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+/* =============================== */
+/*       BANNER PUBLICITARIO       */
+/* =============================== */
+.ad-space {
+  width: 700px;
+  max-width: 95%;
+  margin: 50px auto;
+  background: var(--bg-secondary);
+  padding: 20px;
+  text-align: center;
+  border-radius: var(--border-radius);
+  border: 1px solid #333;
+}
+
+.ad-space h3 {
+  font-size: 22px;
+  color: var(--accent-color);
+}
+
+.ad-gif {
+  width: 100%;
+  height: auto;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.contact-btn {
+  padding: 10px 18px;
+  background: var(--accent-color);
+  color: var(--bg-primary);
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  font-family: var(--font-family);
+  transition: background-color var(--transition-speed);
+}
+
+.contact-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* =============================== */
+/*          FOOTER FIJO            */
+/* =============================== */
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(17, 17, 17, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid #333;
+  padding: 15px 5%;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.footer-logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.footer-social a,
+.footer-links a {
+  color: var(--accent-color);
+  text-decoration: none;
+  margin: 0 8px;
+  font-size: 14px;
+  transition: color var(--transition-speed);
+}
+
+.footer-social a:hover,
+.footer-links a:hover {
+  color: var(--text-primary);
+}
+
+/* =============================== */
+/*       BANNER PUBLICITARIO       */
+/* =============================== */
+.ad-space {
+  /* 1. Ancho igual a la caja de comentarios */
+  width: 1292.3px;
+  /* 2. Hacelo completamente responsive */
+  max-width: 95%;
+  /* 3. Centrado y con márgenes consistentes */
+  margin: 50px auto 40px auto;
+  background: var(--bg-secondary);
+  padding: 20px;
+  text-align: center;
+  border-radius: var(--border-radius);
+  border: 1px solid #333;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.ad-space h3 {
+  font-size: 22px;
+  color: var(--accent-color);
+}
+
+.ad-gif {
+  width: 100%; /* La imagen ahora se adapta al contenedor */
+  height: auto;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.contact-btn {
+  padding: 10px 18px;
+  background: var(--accent-color);
+  color: var(--bg-primary);
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  font-family: var(--font-family);
+  transition: background-color var(--transition-speed);
+}
+
+.contact-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* =============================== */
+/*  CAJA DE COMENTARIOS FIJA      */
+/* =============================== */
+.fixed-comment-box {
+  /* Ancho consistente con el banner */
+  width: 1292.3px;
+  height: 441.6px;
+  /* Responsivo para pantallas más pequeñas */
+  max-width: 95%;
+  margin: 0 auto 40px auto; /* Centrado y separado del footer */
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--text-secondary);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  z-index: 1;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  overflow-y: auto;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+/* ... (el resto de los estilos para .fixed-comment-box permanecen igual) ... */
+.fixed-comment-box h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.fixed-comment-box p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.fixed-comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fixed-comment-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--text-secondary);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  box-sizing: border-box;
+}
+
+.fixed-comment-input#fixed-comment-text {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.fixed-submit-btn {
+  padding: 10px 15px;
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: background-color var(--transition-speed);
+  align-self: flex-end;
+}
+
+.fixed-submit-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.fixed-comment-list {
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.fixed-comment {
+  padding: 10px;
+  border-bottom: 1px solid var(--text-secondary);
+  margin-bottom: 10px;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+}
+
+.fixed-comment strong {
+  color: var(--accent-color);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.fixed-comment small {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+/* ------------------------------ */
+/* MEDIA QUERY PARA MÓVILES   */
+/* ------------------------------ */
+@media (max-width: 768px) {
+  .ad-space,
+  .fixed-comment-box {
+    /* En móviles, ocupan casi todo el ancho pero sin desbordarse */
+    width: 95%;
+    max-width: 95%;
+    padding: 15px; /* Reducimos el padding para aprovechar más espacio */
+    margin: 30px auto; /* Reducimos los márgenes verticales */
+  }
+}
+
+/* Resto de estilos para la caja de comentarios */
+.fixed-comment-box h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.fixed-comment-box p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.fixed-comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fixed-comment-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--text-secondary);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+}
+
+.fixed-comment-input#fixed-comment-text {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.fixed-submit-btn {
+  padding: 10px 15px;
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: background-color var(--transition-speed);
+  align-self: flex-end;
+}
+
+.fixed-submit-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.fixed-comment-list {
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.fixed-comment {
+  padding: 10px;
+  border-bottom: 1px solid var(--text-secondary);
+  margin-bottom: 10px;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+}
+
+.fixed-comment strong {
+  color: var(--accent-color);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.fixed-comment small {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 1300px) {
+  .fixed-comment-box {
+    width: 95%;
+    height: auto;
+    min-height: 300px;
+  }
+}
+/* =============================== */
+/*           MODAL UNIVERSAL        */
+/* =============================== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.9); /* Fondo oscuro semitransparente */
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  width: 100%;
+  max-width: 900px;
+  border-radius: var(--border-radius);
+  position: relative;
+  box-shadow: 0 0 25px rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content h2 {
+  color: var(--text-primary);
+  padding: 15px;
+  margin: 0;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.modal .close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: var(--text-primary);
+  background: transparent;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform var(--transition-speed);
+}
+
+.modal .close:hover {
+  transform: rotate(90deg);
+  color: var(--accent-color);
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* Aspect ratio 16:9 */
+  background-color: #000; /* Fondo negro explícito para el contenedor del video */
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+/* =============================== */
+/*  BOTÓN DE PANTALLA COMPLETA */
+/* =============================== */
+.fullscreen-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 170, 0, 0.8); /* Color de acento visible */
+  color: #000; /* Texto negro para máximo contraste */
+  border: none;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 11;
+  transition: all var(--transition-speed);
+  display: none; /* Oculto por defecto */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.fullscreen-btn:hover {
+  background: var(--accent-hover); /* Más claro al pasar el ratón */
+  transform: scale(1.1);
+}
+
+/* =============================== */
+/*  ESTILOS PARA NUESTRA PANTALLA COMPLETA */
+/* =============================== */
+
+/* Cuando la página entera está en pantalla completa, oculta todo excepto el modal */
+body:fullscreen .fixed-header,
+body:fullscreen .main-content,
+body:fullscreen .ad-space,
+body:fullscreen .fixed-footer,
+body:fullscreen .fixed-comment-box {
+  display: none !important;
+}
+
+/* Hace que el modal ocupe toda la pantalla */
+body:fullscreen .modal {
+  background: #000; /* Fondo negro sólido */
+  padding: 0;
+}
+
+body:fullscreen .modal-content {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body:fullscreen .video-wrapper {
+  width: 100%;
+  height: 100%;
+  padding-top: 0;
+}
+
+body:fullscreen .video-wrapper iframe {
+  border-radius: 0;
+}
+
+/* =============================== */
+/*           RESPONSIVE            */
+/* =============================== */
+@media (max-width: 800px) {
+  .controls {
+    flex-wrap: wrap;
+  }
+  .fixed-footer {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .fixed-header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+  body {
+    padding-top: 130px;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  .hero-buttons {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* En móviles, la caja de comentarios ocupa más espacio para no tapar el footer */
+  .fixed-comment-box {
+    bottom: 160px;
+  }
+  }
